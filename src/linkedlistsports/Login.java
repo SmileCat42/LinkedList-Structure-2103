@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package projectarray;
+package linkedlistsports;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -10,14 +10,19 @@ import java.awt.Font;
 public class Login extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
-
-    /**
-     * Creates new form Login
-     */
-    public Login() {
-        initComponents();
+    node START=null;
+    class node{
+        public String id;
+        public String pass;
+        public node link;
     }
 
+
+    public Login() {
+        initComponents();
+        UIManager.put("OptionPane.messageFont", new Font("Tahoma", Font.PLAIN, 16));
+        UIManager.put("OptionPane.buttonFont", new Font("Tahoma", Font.PLAIN, 14));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,11 +35,11 @@ public class Login extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -84,7 +89,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                    .addComponent(jTextField2))
+                    .addComponent(jPasswordField1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
@@ -101,9 +106,9 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPasswordField1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,26 +183,56 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int user=Integer.parseInt(jTextField1.getText());
-        int pass=Integer.parseInt(jTextField2.getText());
+        String user=jTextField1.getText();
+        String pass=jPasswordField1.getText();
         
-       
-        
-        if(user==1234 && pass==1234){
-            System.out.println("Login complete!");
+        node PTR=START;
+        while(PTR!=null){
+          if(user.equals((String)PTR.id) && pass.equals(PTR.pass)) {
+              System.out.println("Login complete!");
             JOptionPane.showMessageDialog(this, "ล็อกอินสำเร็จ!");
             Menu f2 = new Menu();  // สร้างหน้าฟอร์มใหม่
             f2.setVisible(true);     // แสดง Form2
             this.dispose(); 
-        }else{
-           JOptionPane.showMessageDialog(this, "กรอกรหัสผิด! กรุณากรอก\nUsername : 1234\nPassword : 1234");
+              break;
+          }else
+            PTR=PTR.link;
         }
+        System.out.println("not found");
+            JOptionPane.showMessageDialog(this, "user or password not correct");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        UIManager.put("OptionPane.messageFont", new Font("Tahoma", Font.PLAIN, 16));
-        UIManager.put("OptionPane.buttonFont", new Font("Tahoma", Font.PLAIN, 14));
-        JOptionPane.showMessageDialog(this, "ขออภัยค่ะ ยังเป็นนิวบี้อยู่ รบกวนท่านกรอก\nUsername : 1234\nPassword : 1234\n ขอบคุณค่ะ");
+        String username=jTextField1.getText();
+        String pass=jPasswordField1.getText();
+        if(username.length()<6 || username.length()>10){
+            System.out.println("Please create username 6-10 chalacters");
+            JOptionPane.showMessageDialog(this, "Please create username 6-10 chalacters");
+            return;
+        }
+        if(pass.length()<6 || pass.length()>10){
+            System.out.println("Please create password 6-10 chalacters");
+            JOptionPane.showMessageDialog(this, "Please create password 6-10 chalacters");
+            return;
+        }
+        
+        node PTR=START;
+        while(PTR!=null){
+          if(username==(String)PTR.id) {
+              System.out.println("this username exist already");
+            JOptionPane.showMessageDialog(this, "this username exist already");
+              return;
+          }else
+            PTR=PTR.link;
+        }
+        node NEW=new node();
+            NEW.id=username;
+            NEW.pass=pass;
+            
+            NEW.link=START;
+            START=NEW;
+       System.out.println("Create username complete");
+            JOptionPane.showMessageDialog(this, "Create username complete");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -236,7 +271,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

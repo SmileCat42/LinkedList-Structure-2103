@@ -18,6 +18,8 @@ public class DataStore {
         public int type;
         public float price;
         public String pic;
+        Products left;
+        Products right;
 
         public void setAll(int a, String b, int c, float d, String e){
             code = a;
@@ -53,5 +55,19 @@ public class DataStore {
         list[10].setAll(50290,"Puma football",5,800,"/sc/puma.jpg");
         list[11].setAll(50475,"Mikasa volleyball",5,1200,"/sc/volley.jpg");
         list[12].setAll(50778,"Wilson basketball",5,1500,"/sc/wilson.jpg");
+        
+        list[0].left=null;list[0].right=list[1];
+        list[1].left=list[0];list[1].right=list[2];
+        list[2].left=list[1];list[2].right=list[3];
+        list[3].left=list[2];list[3].right=list[4];
+        list[4].left=list[3];list[4].right=list[5];
+        list[5].left=list[4];list[5].right=list[6];
+        list[6].left=list[5];list[6].right=list[7];
+        list[7].left=list[6];list[7].right=list[8];
+        list[8].left=list[7];list[8].right=list[9];
+        list[9].left=list[8];list[9].right=list[10];
+        list[10].left=list[9];list[10].right=list[11];
+        list[11].left=list[10];list[11].right=list[12];
+        list[12].left=list[11];list[12].right=null;
     }
 }
