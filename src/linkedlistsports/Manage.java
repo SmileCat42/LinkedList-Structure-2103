@@ -401,7 +401,7 @@ try {
 
         jLabel19.setText("Storage : ");
 
-        jLabel20.setText("15");
+        jLabel20.setText("-");
 
         jLabel21.setText("Amount : ");
 
@@ -576,17 +576,16 @@ try {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        if(jTextField7.getText().trim().isEmpty() && jTextField7.getText().trim().isEmpty()){
+        if(jTextField7.getText().trim().isEmpty() && jTextField8.getText().trim().isEmpty()){
                 System.out.println("Choose 1 way before or after");
                 JOptionPane.showMessageDialog(this, "กรอกช่องใดช่องหนึ่งค่ะ before หรือ after");
                 return;
         }
-        Object insertCode=jTextField1.getText();
-        Object insertBefore=jTextField7.getText();
-        Object insertAfter=jTextField7.getText();
-        int Code=checkValue(insertCode);
-        int Before=checkValue(insertBefore);
-        int After=checkValue(insertAfter);
+        int Code=checkValue(jTextField1.getText());
+        int Before=checkValue(jTextField7.getText());
+        int After=checkValue(jTextField8.getText());
+        int Price=checkValue(jTextField3.getText());
+        int Type=checkValue(jTextField4.getText());
         Products LOC=SEARCH(Code);
         
         if(Code==-1){
@@ -594,15 +593,34 @@ try {
                 JOptionPane.showMessageDialog(this, "กรุณากรอกตัวเลขที่ช่อง code");
                 return;
         }
+        if(Code<10000 || Code>99999){
+            System.out.println("Input number between 10000-99999");
+                JOptionPane.showMessageDialog(this, "กรุณากรอกรหัส code ระหว่าง 10000-99999 ค่ะ");
+                return;
+        }
         if(LOC!=null){
             System.out.println("This code number exist already");
                 JOptionPane.showMessageDialog(this, "มีหมายเลข code นี้อยู่แล้วค่ะ");
                 return;
         }
-        
-        if( Before==-1 || After==-1){
-                System.out.println("Input number at Before or After");
-                JOptionPane.showMessageDialog(this, "กรุณากรอกเฉพาะตัวเลขที่ช่อง Before หรือ After ช่องใดช่องหนึ่ง");
+        if(Price==-1){
+            System.out.println("Input number at Price");
+                JOptionPane.showMessageDialog(this, "กรุณาระบุข้อมูลราคาเป็นตัวเลข");
+                return;
+        }
+        if(Price<=0){
+            System.out.println("Input number at Price >0");
+                JOptionPane.showMessageDialog(this, "กรุณาราคามากกว่า 0 ค่ะ ของฟรีไม่มีในโลกค่ะ :)");
+                return;
+        }
+        if(Type==-1){
+                System.out.println("Input number at Type");
+                JOptionPane.showMessageDialog(this, "กรุณาประเภทของสินค้าเป็นตัวเลขค่ะ :)");
+                return;
+        }
+        if(Type<1 || Type>5){
+                System.out.println("Input type between 1-5");
+                JOptionPane.showMessageDialog(this, "กรุณาระบุประเภทของสินค้า 1-5 ค่ะ :)");
                 return;
         }
         
@@ -616,28 +634,59 @@ try {
         
         
         if(jTextField7.getText().trim().isEmpty()){
+                if(After==-1){
+                        System.out.println("Please input only number");
+                        JOptionPane.showMessageDialog(this, "กรุณากรอกเฉพาะตัวเลขที่ช่อง Before หรือ After ช่องใดช่องหนึ่ง");
+                        return;
+                }
                 LOC=SEARCH(After);
                 if(LOC==null){
                         System.out.println("Not found");
                         JOptionPane.showMessageDialog(this, "ไม่พบ code ที่ต้องการแทรกท้ายค่ะ");
                         return;
                 }
+                
+                if(LOC==LAST){
+                        LOC.FORW = NEW; NEW.BACK = LOC;
+                        LAST=NEW;
+                        DataStore.n++;
+                        System.out.println("Status : insert complete!");
+                        jLabel21.setText("Amount :    "+DataStore.n);
+                         loadTableData();
+                         return;
+                }
                 INSTWL(LOC,LOC.FORW,NEW);
         }else{
+                if(Before==-1){
+                        System.out.println("Please input only number");
+                        JOptionPane.showMessageDialog(this, "กรุณากรอกเฉพาะตัวเลขที่ช่อง Before หรือ After ช่องใดช่องหนึ่ง");
+                        return;
+                }
                 LOC=SEARCH(Before);
+                if(LOC==START){
+                        LOC.BACK = NEW; NEW.FORW = LOC;
+                        START=NEW;
+                        DataStore.n++;
+                        System.out.println("Status : insert complete!");
+                        jLabel21.setText("Amount :    "+DataStore.n);
+                         loadTableData();
+                         return;
+                }
                 if(LOC==null){
                         System.out.println("Not found");
                         JOptionPane.showMessageDialog(this, "ไม่พบ code ที่ต้องการแทรกหน้าค่ะ");
                         return;
+                }if(LOC==START){
+                        LOC.BACK = NEW; NEW.FORW = LOC;
+                        START=NEW;
+                        DataStore.n++;
+                        System.out.println("Status : insert complete!");
+                        jLabel21.setText("Amount :    "+DataStore.n);
+                         loadTableData();
+                         return;
                 }
                 INSTWL(LOC.BACK,LOC,NEW);
         }
-        
-        
-        
-        
-        
-        
 
         DataStore.n++;
         System.out.println("Status : insert complete!");
@@ -652,7 +701,12 @@ try {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int delCode = Integer.parseInt(jTextField5.getText());
+        int delCode = checkValue(jTextField5.getText());
+        if(delCode==-1){
+            System.out.println("Input number need to delete at Delete code");
+                        JOptionPane.showMessageDialog(this, "กรุณากรอกตัวเลขที่ต้องการลบในช่อง code ค่ะ");
+                        return;
+        }
         Products LOC=SEARCH(delCode);
         if(LOC==null){
                 System.out.println("not found");
@@ -663,6 +717,26 @@ try {
         jLabel13.setText("Name : "+LOC.name);
         jLabel14.setText("Price : "+LOC.price);
         jLabel15.setText("Type : "+LOC.type);
+        if(LOC==START){
+                LOC.FORW.BACK = null;
+                START=LOC.FORW;
+                DataStore.n--;
+                System.out.println("Status : delete complete!");
+                jLabel11.setText("Status : delete complete!");
+                jLabel21.setText("Amount :    "+DataStore.n);
+                loadTableData();
+                return;
+        }
+        if(LOC==LAST){
+                LOC.BACK.FORW = null;
+                START=LOC.BACK;
+                DataStore.n--;
+                System.out.println("Status : delete complete!");
+                jLabel11.setText("Status : delete complete!");
+                jLabel21.setText("Amount :    "+DataStore.n);
+                loadTableData();
+                return;
+        }
         DELTWL(LOC);
         DataStore.n--;
         System.out.println("Status : delete complete!");
