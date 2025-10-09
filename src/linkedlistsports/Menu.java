@@ -550,44 +550,35 @@ public Menu() {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(current<(DataStore.n-1)){
-            current++;
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(DataStore.list[current].pic)));
-        }else if(current<(UB-1)){
-                current++;
-                jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sc/home.png")));
-        
-        }else{
+
+        if(current.right==null){
             JOptionPane.showMessageDialog(this, "Overflow!");
             System.out.println("Overflow");
+            return;
         }
-        jLabel19.setText(""+(current+1));
+        current=current.right;
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(current.pic)));
         jTextArea1.setText("                  Detail"+
-                "\nProduct code : "+DataStore.list[current].code+
-                "\nName : "+DataStore.list[current].name+
-                "\nType : "+DataStore.list[current].type+ 
-                "\nPrice : "+DataStore.list[current].price+" baht");
+                "\nProduct code : "+current.code+
+                "\nName : "+current.name+
+                "\nType : "+current.type+ 
+                "\nPrice : "+current.price+" baht");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        if(current>DataStore.n){
-            current--;
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sc/home.png")));
-        }else if(current>LB){
-            current--;
-            jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(DataStore.list[current].pic)));
-        }
-        else{
+
+        if(current.left==null){
             JOptionPane.showMessageDialog(this, "Underflow!");
             System.out.println("Underflow");
+            return;
         }
-        jLabel19.setText(""+(current+1));
+        current=current.left;
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(current.pic)));
         jTextArea1.setText("                  Detail"+
-                "\nProduct code : "+DataStore.list[current].code+
-                "\nName : "+DataStore.list[current].name+
-                "\nType : "+DataStore.list[current].type+ 
-                "\nPrice : "+DataStore.list[current].price+" baht");
+                "\nProduct code : "+current.code+
+                "\nName : "+current.name+
+                "\nType : "+current.type+ 
+                "\nPrice : "+current.price+" baht");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
