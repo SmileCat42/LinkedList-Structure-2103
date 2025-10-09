@@ -10,8 +10,10 @@ package linkedlistsports;
  */
 public class DataStore {
     public static int n=13;
+    static Products START,LAST;
     final int UB=15;
     int LB=0;
+    
     public static class Products {
         public int code;
         public String name;
@@ -39,6 +41,7 @@ public class DataStore {
         // กำหนดข้อมูลตั้งแต่แรก
         Products NEW1= new Products();
         NEW1.setAll(10233,"Adidas sneaker",1,4600,"/sc/sneakerAdi.jpg");
+        START=NEW1;
         Products NEW2= new Products();
         NEW2.setAll(10472,"Nike sneaker",1,4200,"/sc/sneakerNike.jpg");
         Products NEW3= new Products();
@@ -63,6 +66,7 @@ public class DataStore {
         NEW12.setAll(50475,"Mikasa volleyball",5,1200,"/sc/volley.jpg");
         Products NEW13= new Products();
         NEW13.setAll(50778,"Wilson basketball",5,1500,"/sc/wilson.jpg");
+        LAST=NEW13;
         
         NEW1.left=null;NEW1.right=NEW2;
         NEW2.left=NEW1;NEW2.right=NEW3;

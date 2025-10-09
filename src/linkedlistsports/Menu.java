@@ -11,15 +11,31 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JTextArea;
+import linkedlistsports.DataStore.Products;
 
 public class Menu extends javax.swing.JFrame {
     final int UB=15;
     int LB=0;
-    int current=-1;
+    Products START=DataStore.START;
+    Products LAST=DataStore.LAST;
+    Products current=DataStore.START;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
     
         
-
+public  Products SEARCHTYPE(int item) {
+        int ITEM = item;
+        Products LOC=null;
+        Products PTR=null;
+        PTR=START;
+        while(PTR!=null){
+          if(ITEM==(int)PTR.type) {
+              LOC = PTR;
+              return LOC;
+          }else
+            PTR=PTR.right;
+        }
+        return LOC;
+}
 
         
       public static void main(String args[]) {
@@ -32,9 +48,10 @@ public class Menu extends javax.swing.JFrame {
 
 public Menu() {
     initComponents();
+    
     this.getContentPane().setBackground(new Color(60, 63, 65));
     jLabel17.setText(""+DataStore.n);
-    jLabel19.setText(""+(current+1));
+    jLabel19.setText("-");
     JButton menuBtn = new JButton("Sneaker");
     menuBtn.setFocusPainted(false);
     menuBtn.setBackground(new Color(60, 63, 65));   // พื้นหลังเทาเข้ม
@@ -327,7 +344,7 @@ public Menu() {
 
         jLabel12.setText("Storage : ");
 
-        jLabel13.setText("15");
+        jLabel13.setText("-");
 
         jLabel14.setText("Amount : ");
 
@@ -483,82 +500,53 @@ public Menu() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        current=LB;
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(DataStore.list[current].pic)));
-       jLabel19.setText(""+(current+1));
+        current=SEARCHTYPE(1);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(current.pic)));
         jTextArea1.setText("                  Detail"+
-                "\nProduct code : "+DataStore.list[current].code+
-                "\nName : "+DataStore.list[current].name+
-                "\nType : "+DataStore.list[current].type+ 
-                "\nPrice : "+DataStore.list[current].price+" baht");
+                "\nProduct code : "+current.code+
+                "\nName : "+current.name+
+                "\nType : "+current.type+ 
+                "\nPrice : "+current.price+" baht");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        int i;
-        for(i=LB;i<DataStore.n;i++){
-            if(DataStore.list[i].type==2){
-                current=i;
-                break;
-            }
-        }
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(DataStore.list[current].pic)));
-        jLabel19.setText(""+(current+1));
+        current=SEARCHTYPE(2);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(current.pic)));
         jTextArea1.setText("                  Detail"+
-                "\nProduct code : "+DataStore.list[current].code+
-                "\nName : "+DataStore.list[current].name+
-                "\nType : "+DataStore.list[current].type+ 
-                "\nPrice : "+DataStore.list[current].price+" baht");
+                "\nProduct code : "+current.code+
+                "\nName : "+current.name+
+                "\nType : "+current.type+ 
+                "\nPrice : "+current.price+" baht");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        int i;
-        for(i=LB;i<DataStore.n;i++){
-            if(DataStore.list[i].type==3){
-                current=i;
-                break;
-            }
-        }
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(DataStore.list[current].pic)));
-        jLabel19.setText(""+(current+1));
+        current=SEARCHTYPE(3);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(current.pic)));
         jTextArea1.setText("                  Detail"+
-                "\nProduct code : "+DataStore.list[current].code+
-                "\nName : "+DataStore.list[current].name+
-                "\nType : "+DataStore.list[current].type+ 
-                "\nPrice : "+DataStore.list[current].price+" baht");
+                "\nProduct code : "+current.code+
+                "\nName : "+current.name+
+                "\nType : "+current.type+ 
+                "\nPrice : "+current.price+" baht");
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-int i;
-        for(i=LB;i<DataStore.n;i++){
-            if(DataStore.list[i].type==4){
-                current=i;
-                break;
-            }
-        }
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(DataStore.list[current].pic)));
-        jLabel19.setText(""+(current+1));
+        current=SEARCHTYPE(4);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(current.pic)));
         jTextArea1.setText("                  Detail"+
-                "\nProduct code : "+DataStore.list[current].code+
-                "\nName : "+DataStore.list[current].name+
-                "\nType : "+DataStore.list[current].type+ 
-                "\nPrice : "+DataStore.list[current].price+" baht");
+                "\nProduct code : "+current.code+
+                "\nName : "+current.name+
+                "\nType : "+current.type+ 
+                "\nPrice : "+current.price+" baht");
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-int i;
-        for(i=LB;i<DataStore.n;i++){
-            if(DataStore.list[i].type==5){
-                current=i;
-                break;
-            }
-        }
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(DataStore.list[current].pic)));
-        jLabel19.setText(""+(current+1));
+        current=SEARCHTYPE(5);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(current.pic)));
         jTextArea1.setText("                  Detail"+
-                "\nProduct code : "+DataStore.list[current].code+
-                "\nName : "+DataStore.list[current].name+
-                "\nType : "+DataStore.list[current].type+ 
-                "\nPrice : "+DataStore.list[current].price+" baht");
+                "\nProduct code : "+current.code+
+                "\nName : "+current.name+
+                "\nType : "+current.type+ 
+                "\nPrice : "+current.price+" baht");
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
