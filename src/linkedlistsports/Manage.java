@@ -588,42 +588,57 @@ try {
         int Before=checkValue(insertBefore);
         int After=checkValue(insertAfter);
         Products LOC=SEARCH(Code);
-        if(LOC!=null){
-            System.out.println("This code number exist already");
-                JOptionPane.showMessageDialog(this, "มีหมายเลข code นี้อยู่แล้วค่ะ");
-                return;
-        }
+        
         if(Code==-1){
             System.out.println("Input number at Code!");
                 JOptionPane.showMessageDialog(this, "กรุณากรอกตัวเลขที่ช่อง code");
                 return;
         }
+        if(LOC!=null){
+            System.out.println("This code number exist already");
+                JOptionPane.showMessageDialog(this, "มีหมายเลข code นี้อยู่แล้วค่ะ");
+                return;
+        }
+        
         if( Before==-1 || After==-1){
                 System.out.println("Input number at Before or After");
                 JOptionPane.showMessageDialog(this, "กรุณากรอกเฉพาะตัวเลขที่ช่อง Before หรือ After ช่องใดช่องหนึ่ง");
                 return;
         }
-        if(Before<1 || Before>=DataStore.n){
-                System.out.println("Please input a position inside the allowed area.");
-                JOptionPane.showMessageDialog(this, "กรุณาระบุตำแหน่งภายในขอบเขต");
-                return;
-        }
-        if(After<2 || Before>DataStore.n){
-                System.out.println("Please input a position inside the allowed area.");
-                JOptionPane.showMessageDialog(this, "กรุณาระบุตำแหน่งภายในขอบเขต");
-                return;
-        }
         
         Products NEW = new Products();
-
-        INSTWL(LOC.BACK,LOC,NEW);
-        
         NEW.code=Integer.parseInt(jTextField1.getText());
         NEW.name=jTextField2.getText();
         NEW.price=Integer.parseInt(jTextField3.getText());
         NEW.type=Integer.parseInt(jTextField4.getText());
         NEW.pic="/sc/home.png";
         
+        
+        
+        if(jTextField7.getText().trim().isEmpty()){
+                LOC=SEARCH(After);
+                if(LOC==null){
+                        System.out.println("Not found");
+                        JOptionPane.showMessageDialog(this, "ไม่พบ code ที่ต้องการแทรกท้ายค่ะ");
+                        return;
+                }
+                INSTWL(LOC,LOC.FORW,NEW);
+        }else{
+                LOC=SEARCH(Before);
+                if(LOC==null){
+                        System.out.println("Not found");
+                        JOptionPane.showMessageDialog(this, "ไม่พบ code ที่ต้องการแทรกหน้าค่ะ");
+                        return;
+                }
+                INSTWL(LOC.BACK,LOC,NEW);
+        }
+        
+        
+        
+        
+        
+        
+
         DataStore.n++;
         System.out.println("Status : insert complete!");
         jLabel21.setText("Amount :    "+DataStore.n);
