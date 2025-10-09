@@ -7,12 +7,15 @@ package linkedlistsports;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
+import java.awt.Font;
+import linkedlistsports.DataStore.Products;
 
 
 public class Manage extends javax.swing.JFrame {
         final int UB=15;
         int LB=0;
-
+        Products START=DataStore.START;
+        Products LAST=DataStore.LAST;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Manage.class.getName());
 
     private void loadTableData() {
@@ -20,35 +23,68 @@ public class Manage extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         
-
-        for (int i = 0; i < DataStore.n; i++) {
+        Products table=START;
+        int i=0;
+        while(table.FORW!=null) {
             model.addRow(new Object[]{i+1,
-                DataStore.list[i].code,
-                DataStore.list[i].name,
-                DataStore.list[i].price,
-                DataStore.list[i].type,
-                DataStore.list[i].pic
+                table.code,
+                table.name,
+                table.price,
+                table.type,
+                table.pic
             });
+            i++;
+            table=table.FORW;
         }
     }
-    public int SearchData(int ITEM){
-        int LOC=-1;
-        int I=0;
-        while(I<DataStore.n){
-            if(ITEM==DataStore.list[I].code){
-                LOC=I;
-                System.out.println("Found at index : "+I);
-                return LOC;
-            }else{
-                I++;
-            }
+public  Products SEARCH(Object item) {
+        int ITEM = (int)item;
+        Products LOC=null;
+        Products PTR=null;
+        PTR=START;
+        while(PTR!=null){
+          if(ITEM==(int)PTR.code) {
+              LOC = PTR;
+              return LOC;
+          }else
+            PTR=PTR.FORW;
         }
-        System.out.println("Not found");
         return LOC;
+}
+public static void INSTWL(Products LOCA,Products LOCB, Products NEW){      
+       LOCA.FORW = NEW; NEW.FORW = LOCB;
+       LOCB.BACK = NEW; NEW.BACK = LOCA;       
     }
+public static void DELTWL(Products LOC){      
+       LOC.BACK.FORW = LOC.FORW;
+       LOC.FORW.BACK = LOC.BACK;
+    }
+
+public int checkValue(Object value) {
+    int res=-1;
+    if (value instanceof String) {
+        String str = (String) value;
+        
+        try {
+            // ถ้าแปลงเป็นเลขได้ แสดงว่าไม่ใช่ pure string
+            res=Integer.parseInt(str);
+            System.out.println("This is a number: " + str);
+        } catch (NumberFormatException e) {
+            // ถ้าแปลงไม่ได้ = เป็นข้อความ
+            System.out.println("This is a String: " + str);
+            return res; // ออกจากฟังก์ชัน
+        }
+    } else {
+        // กรณีเป็น object อื่นๆ
+        System.out.println("Not a string: " + value);
+    }
+    return res;
+}
     public Manage() {
         initComponents();
         this.getContentPane().setBackground(new Color(60, 63, 65));
+        UIManager.put("OptionPane.messageFont", new Font("Tahoma", Font.PLAIN, 14));
+        UIManager.put("OptionPane.buttonFont", new Font("Tahoma", Font.PLAIN, 14));
         loadTableData();
         jLabel21.setText("Amount :    "+DataStore.n); 
 jTabbedPane1.setPreferredSize(new java.awt.Dimension(200, 400));
@@ -99,6 +135,8 @@ try {
         jTextField4 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -247,34 +285,40 @@ try {
 
         jLabel7.setText("Type");
 
-        jLabel16.setText("Instead No.");
+        jLabel16.setText("before code");
+
+        jLabel22.setText("after code");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel1)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addGap(18, 18, 18))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel16)
-                        .addGap(18, 18, 18)))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                     .addComponent(jTextField2)
                     .addComponent(jTextField3)
                     .addComponent(jTextField4)
-                    .addComponent(jTextField7))
+                    .addComponent(jTextField7)
+                    .addComponent(jTextField8))
                 .addGap(53, 53, 53))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addGap(68, 68, 68)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -304,9 +348,13 @@ try {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Insert", jPanel2);
@@ -527,46 +575,55 @@ try {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int insertCode=Integer.parseInt(jTextField1.getText());
-        int insertIndex=Integer.parseInt(jTextField7.getText());
-        insertIndex-=1;
-        for(int i=0;i<DataStore.n;i++){
-            if(insertCode==DataStore.list[i].code){
-                System.out.println("This code exist already!");
-                JOptionPane.showMessageDialog(this, "This code exist already!");
+        
+        if(jTextField7.getText().trim().isEmpty() && jTextField7.getText().trim().isEmpty()){
+                System.out.println("Choose 1 way before or after");
+                JOptionPane.showMessageDialog(this, "กรอกช่องใดช่องหนึ่งค่ะ before หรือ after");
                 return;
-            }
         }
-        if(DataStore.n>=UB){
-            System.out.println("Array full!");
-            JOptionPane.showMessageDialog(this, "Array full!");
-            return;
+        Object insertCode=jTextField1.getText();
+        Object insertBefore=jTextField7.getText();
+        Object insertAfter=jTextField7.getText();
+        int Code=checkValue(insertCode);
+        int Before=checkValue(insertBefore);
+        int After=checkValue(insertAfter);
+        Products LOC=SEARCH(Code);
+        if(LOC!=null){
+            System.out.println("This code number exist already");
+                JOptionPane.showMessageDialog(this, "มีหมายเลข code นี้อยู่แล้วค่ะ");
+                return;
         }
-        if(insertIndex<0){
-            System.out.println("Underflow!");
-            JOptionPane.showMessageDialog(this, "Underflow!");
-            return;
+        if(Code==-1){
+            System.out.println("Input number at Code!");
+                JOptionPane.showMessageDialog(this, "กรุณากรอกตัวเลขที่ช่อง code");
+                return;
         }
-        if(insertIndex>=(UB-1)){
-            System.out.println("Overflow!");
-            JOptionPane.showMessageDialog(this, "Overflow!");
-            return;
+        if( Before==-1 || After==-1){
+                System.out.println("Input number at Before or After");
+                JOptionPane.showMessageDialog(this, "กรุณากรอกเฉพาะตัวเลขที่ช่อง Before หรือ After ช่องใดช่องหนึ่ง");
+                return;
         }
-        for(int j=(DataStore.n-1);j>=insertIndex;j--){
-            DataStore.Products temp = new DataStore.Products();
-        temp.code = DataStore.list[j].code;
-        temp.name = DataStore.list[j].name;
-        temp.price = DataStore.list[j].price;
-        temp.type = DataStore.list[j].type;
-        temp.pic = DataStore.list[j].pic;
-             DataStore.list[j+1]=temp;
+        if(Before<1 || Before>=DataStore.n){
+                System.out.println("Please input a position inside the allowed area.");
+                JOptionPane.showMessageDialog(this, "กรุณาระบุตำแหน่งภายในขอบเขต");
+                return;
+        }
+        if(After<2 || Before>DataStore.n){
+                System.out.println("Please input a position inside the allowed area.");
+                JOptionPane.showMessageDialog(this, "กรุณาระบุตำแหน่งภายในขอบเขต");
+                return;
         }
         
-        DataStore.list[insertIndex].code=Integer.parseInt(jTextField1.getText());
-        DataStore.list[insertIndex].name=jTextField2.getText();
-        DataStore.list[insertIndex].price=Integer.parseInt(jTextField3.getText());
-        DataStore.list[insertIndex].type=Integer.parseInt(jTextField4.getText());
-        DataStore.list[insertIndex].pic="/sc/home.png";
+        Products NEW = new Products();
+
+        INSTWL(LOC.BACK,LOC,NEW);
+        
+        NEW.code=Integer.parseInt(jTextField1.getText());
+        NEW.name=jTextField2.getText();
+        NEW.price=Integer.parseInt(jTextField3.getText());
+        NEW.type=Integer.parseInt(jTextField4.getText());
+        NEW.pic="/sc/home.png";
+        
         DataStore.n++;
         System.out.println("Status : insert complete!");
         jLabel21.setText("Amount :    "+DataStore.n);
@@ -581,20 +638,17 @@ try {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int delCode = Integer.parseInt(jTextField5.getText());
-        int index=SearchData(delCode);
-        if(index<0){
-                System.out.println("Status : not found");
-                jLabel11.setText("Status : not found..");
+        Products LOC=SEARCH(delCode);
+        if(LOC==null){
+                System.out.println("not found");
+                JOptionPane.showMessageDialog(this, "ไม่มีเลข code ดังกล่าวค่ะ");
                 return;
         }
-        jLabel12.setText("Code : "+DataStore.list[index].code);
-        jLabel13.setText("Name : "+DataStore.list[index].name);
-        jLabel14.setText("Price : "+DataStore.list[index].price);
-        jLabel15.setText("Type : "+DataStore.list[index].type);
-        for(int i=index;i<(DataStore.n-1);i++){
-                DataStore.list[i]=DataStore.list[i+1];
-        }
-        DataStore.list[DataStore.n-1]=null;
+        jLabel12.setText("Code : "+LOC.code);
+        jLabel13.setText("Name : "+LOC.name);
+        jLabel14.setText("Price : "+LOC.price);
+        jLabel15.setText("Type : "+LOC.type);
+        DELTWL(LOC);
         DataStore.n--;
         System.out.println("Status : delete complete!");
         jLabel11.setText("Status : delete complete!");
@@ -605,20 +659,21 @@ try {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int SearchCode=  Integer.parseInt(jTextField6.getText());
-        int index=SearchData(SearchCode);
-        if(index<0){
-            JOptionPane.showMessageDialog(this, "not found!");
-            return;
+        Products temp=SEARCH(SearchCode);
+        if(temp==null){
+            System.out.println("not found");
+                JOptionPane.showMessageDialog(this, "ไม่มีเลข code ดังกล่าวค่ะ");
+                return;
         }
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         
-            model.addRow(new Object[]{index+1,
-                DataStore.list[index].code,
-                DataStore.list[index].name,
-                DataStore.list[index].price,
-                DataStore.list[index].type,
-                DataStore.list[index].pic
+            model.addRow(new Object[]{"-",
+                temp.code,
+                temp.name,
+                temp.price,
+                temp.type,
+                temp.pic
             });
             System.out.println("Status : Search complete");
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -629,7 +684,7 @@ try {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        int PTR;
+        /*int PTR;
         for(int K=0;K<(DataStore.n-1);K++){
             PTR=0;
             while(PTR<(DataStore.n-1)-K){
@@ -644,7 +699,7 @@ try {
             }   
         }
         System.out.println("Status : data sorted");
-        loadTableData();
+        loadTableData();*/
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
@@ -677,6 +732,7 @@ try {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -699,6 +755,7 @@ try {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 
 }

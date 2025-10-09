@@ -20,8 +20,8 @@ public class DataStore {
         public int type;
         public float price;
         public String pic;
-        Products left;
-        Products right;
+        Products BACK;
+        Products FORW;
 
         public void setAll(int a, String b, int c, float d, String e){
             code = a;
@@ -68,18 +68,18 @@ public class DataStore {
         NEW13.setAll(50778,"Wilson basketball",5,1500,"/sc/wilson.jpg");
         LAST=NEW13;
         
-        NEW1.left=null;NEW1.right=NEW2;
-        NEW2.left=NEW1;NEW2.right=NEW3;
-        NEW3.left=NEW2;NEW3.right=NEW4;
-        NEW4.left=NEW3;NEW4.right=NEW5;
-        NEW5.left=NEW4;NEW5.right=NEW6;
-        NEW6.left=NEW5;NEW6.right=NEW7;
-        NEW7.left=NEW6;NEW7.right=NEW8;
-        NEW8.left=NEW7;NEW8.right=NEW9;
-        NEW9.left=NEW8;NEW9.right=NEW10;
-        NEW10.left=NEW9;NEW10.right=NEW11;
-        NEW11.left=NEW10;NEW11.right=NEW12;
-        NEW12.left=NEW11;NEW12.right=NEW13;
-        NEW13.left=NEW12;NEW13.right=null;
+        NEW1.BACK=null;NEW1.FORW=NEW2;
+        NEW2.BACK=NEW1;NEW2.FORW=NEW3;
+        NEW3.BACK=NEW2;NEW3.FORW=NEW4;
+        NEW4.BACK=NEW3;NEW4.FORW=NEW5;
+        NEW5.BACK=NEW4;NEW5.FORW=NEW6;
+        NEW6.BACK=NEW5;NEW6.FORW=NEW7;
+        NEW7.BACK=NEW6;NEW7.FORW=NEW8;
+        NEW8.BACK=NEW7;NEW8.FORW=NEW9;
+        NEW9.BACK=NEW8;NEW9.FORW=NEW10;
+        NEW10.BACK=NEW9;NEW10.FORW=NEW11;
+        NEW11.BACK=NEW10;NEW11.FORW=NEW12;
+        NEW12.BACK=NEW11;NEW12.FORW=NEW13;
+        NEW13.BACK=NEW12;NEW13.FORW=null;
     }
 }

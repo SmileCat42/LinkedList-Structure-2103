@@ -32,7 +32,7 @@ public  Products SEARCHTYPE(int item) {
               LOC = PTR;
               return LOC;
           }else
-            PTR=PTR.right;
+            PTR=PTR.FORW;
         }
         return LOC;
 }
@@ -551,12 +551,12 @@ public Menu() {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        if(current.right==null){
+        if(current.FORW==null){
             JOptionPane.showMessageDialog(this, "Overflow!");
             System.out.println("Overflow");
             return;
         }
-        current=current.right;
+        current=current.FORW;
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(current.pic)));
         jTextArea1.setText("                  Detail"+
                 "\nProduct code : "+current.code+
@@ -567,12 +567,12 @@ public Menu() {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        if(current.left==null){
+        if(current.BACK==null){
             JOptionPane.showMessageDialog(this, "Underflow!");
             System.out.println("Underflow");
             return;
         }
-        current=current.left;
+        current=current.BACK;
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(current.pic)));
         jTextArea1.setText("                  Detail"+
                 "\nProduct code : "+current.code+
