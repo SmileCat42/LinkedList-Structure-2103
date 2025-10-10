@@ -9,15 +9,13 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
-import static java.util.Collections.list;
 import javax.swing.BorderFactory;
 import javax.swing.JTextArea;
 import ver.util.LinkedList.DataStore.DNode;
 import java.util.LinkedList;
 
 public class Menu extends javax.swing.JFrame {
-    final int UB=15;
-    int LB=0;
+
 
     DNode current=null;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());

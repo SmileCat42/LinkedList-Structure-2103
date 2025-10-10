@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Font;
 import ver.util.LinkedList.DataStore.DNode;
 import java.util.LinkedList;
+import static ver.util.LinkedList.DataStore.list;
 
 public class Manage extends javax.swing.JFrame {
         final int UB=15;
@@ -24,18 +25,15 @@ public class Manage extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         
-        DNode table=START;
         int i=0;
-        while(table.FORW!=null) {
+        for(i=0;i<DataStore.list.size()-1;i++) {
             model.addRow(new Object[]{i+1,
-                table.code,
-                table.name,
-                table.price,
-                table.type,
-                table.pic
+                DataStore.list.get(i).code,
+                DataStore.list.get(i).name,
+                DataStore.list.get(i).price,
+                DataStore.list.get(i).type,
+                DataStore.list.get(i).pic
             });
-            i++;
-            table=table.FORW;
         }
     }
 public  DNode SEARCH(Object item) {
@@ -52,14 +50,7 @@ public  DNode SEARCH(Object item) {
         }
         return LOC;
 }
-public static void INSTWL(DNode LOCA,DNode LOCB, DNode NEW){      
-       LOCA.FORW = NEW; NEW.FORW = LOCB;
-       LOCB.BACK = NEW; NEW.BACK = LOCA;       
-    }
-public static void DELTWL(DNode LOC){      
-       LOC.BACK.FORW = LOC.FORW;
-       LOC.FORW.BACK = LOC.BACK;
-    }
+
 
 public int checkValue(Object value) {
     int res=-1;
@@ -87,7 +78,7 @@ public int checkValue(Object value) {
         UIManager.put("OptionPane.messageFont", new Font("Tahoma", Font.PLAIN, 14));
         UIManager.put("OptionPane.buttonFont", new Font("Tahoma", Font.PLAIN, 14));
         loadTableData();
-        jLabel21.setText("Amount :    "+DataStore.n); 
+        jLabel21.setText("Amount :    "+DataStore.list.size()); 
 jTabbedPane1.setPreferredSize(new java.awt.Dimension(200, 400));
 try {
     javax.swing.UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -572,11 +563,9 @@ try {
                 return;
         }
         int Code=checkValue(jTextField1.getText());
-        int Before=checkValue(jTextField7.getText());
-        int After=checkValue(jTextField8.getText());
+        int Index=checkValue(jTextField7.getText());
         int Price=checkValue(jTextField3.getText());
         int Type=checkValue(jTextField4.getText());
-        DNode LOC=SEARCH(Code);
         
         if(Code==-1){
             System.out.println("Input number at Code!");
@@ -614,14 +603,8 @@ try {
                 return;
         }
         
-        DNode NEW = new DNode();
-        NEW.code=Integer.parseInt(jTextField1.getText());
-        NEW.name=jTextField2.getText();
-        NEW.price=Integer.parseInt(jTextField3.getText());
-        NEW.type=Integer.parseInt(jTextField4.getText());
-        NEW.pic="/sc/home.png";
         
-        
+        list.add(Index,new DNode(Code, jTextField2.getText(), Type, Price, "/sc/home.png"));
         
         /*if(jTextField7.getText().trim().isEmpty()){
                 if(After==-1){
@@ -639,9 +622,9 @@ try {
                 if(LOC==LAST){
                         LOC.FORW = NEW; NEW.BACK = LOC;
                         LAST=NEW;
-                        DataStore.n++;
+                        DataStore.list.size()++;
                         System.out.println("Status : insert complete!");
-                        jLabel21.setText("Amount :    "+DataStore.n);
+                        jLabel21.setText("Amount :    "+DataStore.list.size());
                          loadTableData();
                          return;
                 }
@@ -656,9 +639,9 @@ try {
                 if(LOC==START){
                         LOC.BACK = NEW; NEW.FORW = LOC;
                         START=NEW;
-                        DataStore.n++;
+                        DataStore.list.size()++;
                         System.out.println("Status : insert complete!");
-                        jLabel21.setText("Amount :    "+DataStore.n);
+                        jLabel21.setText("Amount :    "+DataStore.list.size());
                          loadTableData();
                          return;
                 }
@@ -669,18 +652,17 @@ try {
                 }if(LOC==START){
                         LOC.BACK = NEW; NEW.FORW = LOC;
                         START=NEW;
-                        DataStore.n++;
+                        DataStore.list.size()++;
                         System.out.println("Status : insert complete!");
-                        jLabel21.setText("Amount :    "+DataStore.n);
+                        jLabel21.setText("Amount :    "+DataStore.list.size());
                          loadTableData();
                          return;
                 }
                 INSTWL(LOC.BACK,LOC,NEW);
         }*/
 
-        DataStore.n++;
         System.out.println("Status : insert complete!");
-        jLabel21.setText("Amount :    "+DataStore.n);
+        jLabel21.setText("Amount :    "+DataStore.list.size());
         loadTableData();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -710,28 +692,25 @@ try {
         if(LOC==START){
                 LOC.FORW.BACK = null;
                 START=LOC.FORW;
-                DataStore.n--;
                 System.out.println("Status : delete complete!");
                 jLabel11.setText("Status : delete complete!");
-                jLabel21.setText("Amount :    "+DataStore.n);
+                jLabel21.setText("Amount :    "+DataStore.list.size());
                 loadTableData();
                 return;
         }
         if(LOC==LAST){
                 LOC.BACK.FORW = null;
                 START=LOC.BACK;
-                DataStore.n--;
                 System.out.println("Status : delete complete!");
                 jLabel11.setText("Status : delete complete!");
-                jLabel21.setText("Amount :    "+DataStore.n);
+                jLabel21.setText("Amount :    "+DataStore.list.size());
                 loadTableData();
                 return;
         }
         DELTWL(LOC);
-        DataStore.n--;
         System.out.println("Status : delete complete!");
         jLabel11.setText("Status : delete complete!");
-        jLabel21.setText("Amount :    "+DataStore.n);
+        jLabel21.setText("Amount :    "+DataStore.list.size());
         loadTableData();
         
     }//GEN-LAST:event_jButton2ActionPerformed
