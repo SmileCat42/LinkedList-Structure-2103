@@ -194,7 +194,7 @@ public class Login extends javax.swing.JFrame {
             Menu f2 = new Menu();  // สร้างหน้าฟอร์มใหม่
             f2.setVisible(true);     // แสดง Form2
             this.dispose(); 
-              break;
+              return;
           }else
             PTR=PTR.link;
         }
