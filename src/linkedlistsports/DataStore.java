@@ -10,18 +10,18 @@ package linkedlistsports;
  */
 public class DataStore {
     public static int n=13;
-    static Products START,LAST;
+    static DNode START,LAST;
     final int UB=15;
     int LB=0;
     
-    public static class Products {
+    public static class DNode {
         public int code;
         public String name;
         public int type;
         public float price;
         public String pic;
-        Products BACK;
-        Products FORW;
+        DNode BACK;
+        DNode FORW;
 
         public void setAll(int a, String b, int c, float d, String e){
             code = a;
@@ -39,32 +39,32 @@ public class DataStore {
 
     static {
         // กำหนดข้อมูลตั้งแต่แรก
-        Products NEW1= new Products();
+        DNode NEW1= new DNode();
         NEW1.setAll(10233,"Adidas sneaker",1,4600,"/sc/sneakerAdi.jpg");
         START=NEW1;
-        Products NEW2= new Products();
+        DNode NEW2= new DNode();
         NEW2.setAll(10472,"Nike sneaker",1,4200,"/sc/sneakerNike.jpg");
-        Products NEW3= new Products();
+        DNode NEW3= new DNode();
         NEW3.setAll(10785,"Skecher sneaker",1,2500,"/sc/ske.jpg");
-        Products NEW4= new Products();
+        DNode NEW4= new DNode();
         NEW4.setAll(20096,"Umbro Glove",2,800,"/sc/ub.jpg");
-        Products NEW5= new Products();
+        DNode NEW5= new DNode();
         NEW5.setAll(20504,"Nike football shirt",2,1500,"/sc/shirtNike.jpg");
-        Products NEW6= new Products();
+        DNode NEW6= new DNode();
         NEW6.setAll(30319,"Ping stick golf",3,1300,"/sc/golfstick.jpg");
-        Products NEW7= new Products();
+        DNode NEW7= new DNode();
         NEW7.setAll(30873,"Anyday golf bag",3,5000,"/sc/golfbag.jpg");
-        Products NEW8= new Products();
+        DNode NEW8= new DNode();
         NEW8.setAll(40152,"Yonex strike",4,2400,"/sc/yon.png");
-        Products NEW9= new Products();
+        DNode NEW9= new DNode();
         NEW9.setAll(40197,"Kawasaki strike",4,1700,"/sc/kawa.jpg");
-        Products NEW10= new Products();
+        DNode NEW10= new DNode();
         NEW10.setAll(40601,"Victor shuttlecock",4,200,"/sc/shuttle.jpg");
-        Products NEW11= new Products();
+        DNode NEW11= new DNode();
         NEW11.setAll(50290,"Puma football",5,800,"/sc/puma.jpg");
-        Products NEW12= new Products();
+        DNode NEW12= new DNode();
         NEW12.setAll(50475,"Mikasa volleyball",5,1200,"/sc/volley.jpg");
-        Products NEW13= new Products();
+        DNode NEW13= new DNode();
         NEW13.setAll(50778,"Wilson basketball",5,1500,"/sc/wilson.jpg");
         LAST=NEW13;
         

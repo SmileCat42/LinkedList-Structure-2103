@@ -8,14 +8,14 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 import java.awt.Font;
-import linkedlistsports.DataStore.Products;
+import linkedlistsports.DataStore.DNode;
 
 
 public class Manage extends javax.swing.JFrame {
         final int UB=15;
         int LB=0;
-        Products START=DataStore.START;
-        Products LAST=DataStore.LAST;
+        DNode START=DataStore.START;
+        DNode LAST=DataStore.LAST;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Manage.class.getName());
 
     private void loadTableData() {
@@ -23,7 +23,7 @@ public class Manage extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
         
-        Products table=START;
+        DNode table=START;
         int i=0;
         while(table.FORW!=null) {
             model.addRow(new Object[]{i+1,
@@ -37,10 +37,10 @@ public class Manage extends javax.swing.JFrame {
             table=table.FORW;
         }
     }
-public  Products SEARCH(Object item) {
+public  DNode SEARCH(Object item) {
         int ITEM = (int)item;
-        Products LOC=null;
-        Products PTR=null;
+        DNode LOC=null;
+        DNode PTR=null;
         PTR=START;
         while(PTR!=null){
           if(ITEM==(int)PTR.code) {
@@ -51,11 +51,11 @@ public  Products SEARCH(Object item) {
         }
         return LOC;
 }
-public static void INSTWL(Products LOCA,Products LOCB, Products NEW){      
+public static void INSTWL(DNode LOCA,DNode LOCB, DNode NEW){      
        LOCA.FORW = NEW; NEW.FORW = LOCB;
        LOCB.BACK = NEW; NEW.BACK = LOCA;       
     }
-public static void DELTWL(Products LOC){      
+public static void DELTWL(DNode LOC){      
        LOC.BACK.FORW = LOC.FORW;
        LOC.FORW.BACK = LOC.BACK;
     }
@@ -575,7 +575,7 @@ try {
         int After=checkValue(jTextField8.getText());
         int Price=checkValue(jTextField3.getText());
         int Type=checkValue(jTextField4.getText());
-        Products LOC=SEARCH(Code);
+        DNode LOC=SEARCH(Code);
         
         if(Code==-1){
             System.out.println("Input number at Code!");
@@ -613,7 +613,7 @@ try {
                 return;
         }
         
-        Products NEW = new Products();
+        DNode NEW = new DNode();
         NEW.code=Integer.parseInt(jTextField1.getText());
         NEW.name=jTextField2.getText();
         NEW.price=Integer.parseInt(jTextField3.getText());
@@ -696,7 +696,7 @@ try {
                         JOptionPane.showMessageDialog(this, "กรุณากรอกตัวเลขที่ต้องการลบในช่อง code ค่ะ");
                         return;
         }
-        Products LOC=SEARCH(delCode);
+        DNode LOC=SEARCH(delCode);
         if(LOC==null){
                 System.out.println("not found");
                 JOptionPane.showMessageDialog(this, "ไม่มีเลข code ดังกล่าวค่ะ");
@@ -742,7 +742,7 @@ try {
                 JOptionPane.showMessageDialog(this, "กรุณากรอกตัวเลข code ที่ต้องการค้นหาค่ะ");
                 return;
         }
-        Products temp=SEARCH(SearchCode);
+        DNode temp=SEARCH(SearchCode);
         if(temp==null){
             System.out.println("not found");
                 JOptionPane.showMessageDialog(this, "ไม่มีเลข code ดังกล่าวค่ะ");

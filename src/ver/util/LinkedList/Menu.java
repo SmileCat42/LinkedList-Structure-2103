@@ -9,31 +9,28 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
+import static java.util.Collections.list;
 import javax.swing.BorderFactory;
 import javax.swing.JTextArea;
-import ver.util.LinkedList.DataStore.Products;
+import ver.util.LinkedList.DataStore.DNode;
+import java.util.LinkedList;
 
 public class Menu extends javax.swing.JFrame {
     final int UB=15;
     int LB=0;
-    Products START=DataStore.START;
-    Products LAST=DataStore.LAST;
-    Products current=DataStore.START;
+
+    DNode current=null;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
     
         
-public  Products SEARCHTYPE(int item) {
-        int ITEM = item;
-        Products LOC=null;
-        Products PTR=null;
-        PTR=START;
-        while(PTR!=null){
-          if(ITEM==(int)PTR.type) {
-              LOC = PTR;
-              return LOC;
-          }else
-            PTR=PTR.FORW;
-        }
+public  DNode SEARCHTYPE(int item) {
+        DNode LOC=null;
+        for (int i = 0; i < DataStore.list.size()-1; i++) {
+            if(item== DataStore.list.get(i).type){
+                LOC=DataStore.list.get(i);
+                return LOC;
+        }              
+}
         return LOC;
 }
 
@@ -550,13 +547,14 @@ public Menu() {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        if(current.FORW==null){
+        int index=DataStore.list.indexOf(current);
+        if(index == DataStore.list.size() - 1){
             JOptionPane.showMessageDialog(this, "Overflow!");
             System.out.println("Overflow");
             return;
         }
-        current=current.FORW;
+        index+=1;
+        current=DataStore.list.get(index);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(current.pic)));
         jTextArea1.setText("                  Detail"+
                 "\nProduct code : "+current.code+
@@ -566,13 +564,14 @@ public Menu() {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        if(current.BACK==null){
+        int index=DataStore.list.indexOf(current);
+        if(index==0){
             JOptionPane.showMessageDialog(this, "Underflow!");
             System.out.println("Underflow");
             return;
         }
-        current=current.BACK;
+        index-=1;
+        current=DataStore.list.get(index);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(current.pic)));
         jTextArea1.setText("                  Detail"+
                 "\nProduct code : "+current.code+

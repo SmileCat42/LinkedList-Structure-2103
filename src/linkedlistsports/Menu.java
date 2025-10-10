@@ -11,21 +11,21 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JTextArea;
-import linkedlistsports.DataStore.Products;
+import linkedlistsports.DataStore.DNode;
 
 public class Menu extends javax.swing.JFrame {
     final int UB=15;
     int LB=0;
-    Products START=DataStore.START;
-    Products LAST=DataStore.LAST;
-    Products current=DataStore.START;
+    DNode START=DataStore.START;
+    DNode LAST=DataStore.LAST;
+    DNode current=DataStore.START;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
     
         
-public  Products SEARCHTYPE(int item) {
+public  DNode SEARCHTYPE(int item) {
         int ITEM = item;
-        Products LOC=null;
-        Products PTR=null;
+        DNode LOC=null;
+        DNode PTR=null;
         PTR=START;
         while(PTR!=null){
           if(ITEM==(int)PTR.type) {
