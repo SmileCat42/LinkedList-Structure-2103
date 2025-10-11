@@ -36,17 +36,14 @@ public class Manage extends javax.swing.JFrame {
             });
         }
     }
-public  DNode SEARCH(Object item) {
-        int ITEM = (int)item;
-        DNode LOC=null;
-        DNode PTR=null;
-        PTR=START;
-        while(PTR!=null){
-          if(ITEM==(int)PTR.code) {
-              LOC = PTR;
-              return LOC;
-          }else
-            PTR=PTR.FORW;
+public  int SEARCH(int ITEM) {
+        int LOC=-1;
+
+        for(int i=0;i<DataStore.list.size();i++){
+            if(DataStore.list.get(i).code==ITEM){
+                    LOC=i;
+                    return LOC;
+            }
         }
         return LOC;
 }
@@ -127,8 +124,6 @@ try {
         jTextField4 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -276,16 +271,14 @@ try {
 
         jLabel7.setText("Type");
 
-        jLabel16.setText("before code");
-
-        jLabel22.setText("after code");
+        jLabel16.setText("Index insert");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,17 +289,13 @@ try {
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel16)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                     .addComponent(jTextField2)
                     .addComponent(jTextField3)
                     .addComponent(jTextField4)
-                    .addComponent(jTextField7)
-                    .addComponent(jTextField8))
+                    .addComponent(jTextField7))
                 .addGap(53, 53, 53))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(68, 68, 68)
@@ -337,15 +326,11 @@ try {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(33, 33, 33))
         );
 
         jTabbedPane1.addTab("Insert", jPanel2);
@@ -567,6 +552,7 @@ try {
         int Price=checkValue(jTextField3.getText());
         int Type=checkValue(jTextField4.getText());
         
+        
         if(Code==-1){
             System.out.println("Input number at Code!");
                 JOptionPane.showMessageDialog(this, "กรุณากรอกตัวเลขที่ช่อง code");
@@ -577,9 +563,15 @@ try {
                 JOptionPane.showMessageDialog(this, "กรุณากรอกรหัส code ระหว่าง 10000-99999 ค่ะ");
                 return;
         }
-        if(LOC!=null){
+        int ind=SEARCH(Code);
+        if(ind!=-1){
             System.out.println("This code number exist already");
                 JOptionPane.showMessageDialog(this, "มีหมายเลข code นี้อยู่แล้วค่ะ");
+                return;
+        }
+        if(Index<1 || Index>DataStore.list.size()){
+                System.out.println("Input index need to insert within the range ");
+                JOptionPane.showMessageDialog(this, "กรุณากรอก index ให้อยู่ภายในขอบเขตค่ะ");
                 return;
         }
         if(Price==-1){
@@ -604,63 +596,9 @@ try {
         }
         
         
-        list.add(Index,new DNode(Code, jTextField2.getText(), Type, Price, "/sc/home.png"));
+        list.add(Index-1,new DNode(Code, jTextField2.getText(), Type, Price, "/sc/home.png"));
         
-        /*if(jTextField7.getText().trim().isEmpty()){
-                if(After==-1){
-                        System.out.println("Please input only number");
-                        JOptionPane.showMessageDialog(this, "กรุณากรอกเฉพาะตัวเลขที่ช่อง Before หรือ After ช่องใดช่องหนึ่ง");
-                        return;
-                }
-                LOC=SEARCH(After);
-                if(LOC==null){
-                        System.out.println("Not found");
-                        JOptionPane.showMessageDialog(this, "ไม่พบ code ที่ต้องการแทรกท้ายค่ะ");
-                        return;
-                }
-                
-                if(LOC==LAST){
-                        LOC.FORW = NEW; NEW.BACK = LOC;
-                        LAST=NEW;
-                        DataStore.list.size()++;
-                        System.out.println("Status : insert complete!");
-                        jLabel21.setText("Amount :    "+DataStore.list.size());
-                         loadTableData();
-                         return;
-                }
-                INSTWL(LOC,LOC.FORW,NEW);
-        }else{
-                if(Before==-1){
-                        System.out.println("Please input only number");
-                        JOptionPane.showMessageDialog(this, "กรุณากรอกเฉพาะตัวเลขที่ช่อง Before หรือ After ช่องใดช่องหนึ่ง");
-                        return;
-                }
-                LOC=SEARCH(Before);
-                if(LOC==START){
-                        LOC.BACK = NEW; NEW.FORW = LOC;
-                        START=NEW;
-                        DataStore.list.size()++;
-                        System.out.println("Status : insert complete!");
-                        jLabel21.setText("Amount :    "+DataStore.list.size());
-                         loadTableData();
-                         return;
-                }
-                if(LOC==null){
-                        System.out.println("Not found");
-                        JOptionPane.showMessageDialog(this, "ไม่พบ code ที่ต้องการแทรกหน้าค่ะ");
-                        return;
-                }if(LOC==START){
-                        LOC.BACK = NEW; NEW.FORW = LOC;
-                        START=NEW;
-                        DataStore.list.size()++;
-                        System.out.println("Status : insert complete!");
-                        jLabel21.setText("Amount :    "+DataStore.list.size());
-                         loadTableData();
-                         return;
-                }
-                INSTWL(LOC.BACK,LOC,NEW);
-        }*/
-
+       
         System.out.println("Status : insert complete!");
         jLabel21.setText("Amount :    "+DataStore.list.size());
         loadTableData();
@@ -679,17 +617,18 @@ try {
                         JOptionPane.showMessageDialog(this, "กรุณากรอกตัวเลขที่ต้องการลบในช่อง code ค่ะ");
                         return;
         }
-        DNode LOC=SEARCH(delCode);
-        if(LOC==null){
+        int LOC=SEARCH(delCode);
+        if(LOC==-1){
                 System.out.println("not found");
                 JOptionPane.showMessageDialog(this, "ไม่มีเลข code ดังกล่าวค่ะ");
                 return;
         }
-        jLabel12.setText("Code : "+LOC.code);
-        jLabel13.setText("Name : "+LOC.name);
-        jLabel14.setText("Price : "+LOC.price);
-        jLabel15.setText("Type : "+LOC.type);
-        if(LOC==START){
+        DNode dd=list.remove(LOC);
+        jLabel12.setText("Code : "+dd.code);
+        jLabel13.setText("Name : "+dd.name);
+        jLabel14.setText("Price : "+dd.price);
+        jLabel15.setText("Type : "+dd.type);
+        /*if(LOC==START){
                 LOC.FORW.BACK = null;
                 START=LOC.FORW;
                 System.out.println("Status : delete complete!");
@@ -706,8 +645,8 @@ try {
                 jLabel21.setText("Amount :    "+DataStore.list.size());
                 loadTableData();
                 return;
-        }
-        DELTWL(LOC);
+        }*/
+
         System.out.println("Status : delete complete!");
         jLabel11.setText("Status : delete complete!");
         jLabel21.setText("Amount :    "+DataStore.list.size());
@@ -722,21 +661,21 @@ try {
                 JOptionPane.showMessageDialog(this, "กรุณากรอกตัวเลข code ที่ต้องการค้นหาค่ะ");
                 return;
         }
-        DNode temp=SEARCH(SearchCode);
-        if(temp==null){
+        int temp=SEARCH(SearchCode);
+        if(temp==-1){
             System.out.println("not found");
                 JOptionPane.showMessageDialog(this, "ไม่มีเลข code ดังกล่าวค่ะ");
                 return;
         }
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        
-            model.addRow(new Object[]{"-",
-                temp.code,
-                temp.name,
-                temp.price,
-                temp.type,
-                temp.pic
+        DNode show=DataStore.list.get(temp);
+            model.addRow(new Object[]{temp,
+                show.code,
+                show.name,
+                show.price,
+                show.type,
+                show.pic
             });
             System.out.println("Status : Search complete");
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -775,7 +714,6 @@ try {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -798,7 +736,6 @@ try {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 
 }
