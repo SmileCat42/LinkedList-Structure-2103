@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import java.awt.Font;
 public class Login extends javax.swing.JFrame {
-    
+    private Menu p1;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
     node START=null;
     class node{
@@ -18,9 +18,14 @@ public class Login extends javax.swing.JFrame {
         public node link;
     }
 
-
-    public Login() {
+public Login() {
+    initComponents();
+    UIManager.put("OptionPane.messageFont", new Font("Tahoma", Font.PLAIN, 16));
+        UIManager.put("OptionPane.buttonFont", new Font("Tahoma", Font.PLAIN, 14));
+    }
+    public Login(Menu p1) {
         initComponents();
+        this.p1=p1;
         UIManager.put("OptionPane.messageFont", new Font("Tahoma", Font.PLAIN, 16));
         UIManager.put("OptionPane.buttonFont", new Font("Tahoma", Font.PLAIN, 14));
     }
@@ -192,9 +197,9 @@ public class Login extends javax.swing.JFrame {
           if(user.equals((String)PTR.id) && pass.equals(PTR.pass)) {
               System.out.println("Login complete!");
             JOptionPane.showMessageDialog(this, "ล็อกอินสำเร็จ!");
-            Menu f2 = new Menu();  // สร้างหน้าฟอร์มใหม่
-            f2.setVisible(true);     // แสดง Form2
-            this.dispose(); 
+            Menu move = new Menu(this);  // สร้างหน้าฟอร์มใหม่
+            move.setVisible(true);     // แสดง Form2
+            this.setVisible(false);
               return;
           }else
             PTR=PTR.link;
@@ -232,6 +237,8 @@ public class Login extends javax.swing.JFrame {
             
             NEW.link=START;
             START=NEW;
+             jTextField1.setText("");
+             jPasswordField1.setText("");
        System.out.println("Create username complete");
             JOptionPane.showMessageDialog(this, "Create username complete");
     }//GEN-LAST:event_jButton2ActionPerformed

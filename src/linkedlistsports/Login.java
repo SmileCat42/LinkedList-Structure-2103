@@ -231,6 +231,8 @@ public class Login extends javax.swing.JFrame {
             
             NEW.link=START;
             START=NEW;
+            jTextField1.setText("");
+             jPasswordField1.setText("");
        System.out.println("Create username complete");
             JOptionPane.showMessageDialog(this, "Create username complete");
     }//GEN-LAST:event_jButton2ActionPerformed

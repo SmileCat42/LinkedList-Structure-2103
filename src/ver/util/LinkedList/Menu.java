@@ -16,7 +16,7 @@ import java.util.LinkedList;
 
 public class Menu extends javax.swing.JFrame {
 
-
+    private Login loginForm;
     DNode current=null;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
     
@@ -40,10 +40,12 @@ public  DNode SEARCHTYPE(int item) {
 }
     
 
-
 public Menu() {
     initComponents();
-    
+}
+public Menu(Login loginForm) {
+    initComponents();
+    this.loginForm = loginForm;
     this.getContentPane().setBackground(new Color(60, 63, 65));
     jLabel17.setText(""+DataStore.n);
     jLabel19.setText("-");
@@ -579,15 +581,14 @@ public Menu() {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        Login f3 = new Login();  // สร้างหน้าฟอร์มใหม่
+        Login f3 = new Login(this);  // สร้างหน้าฟอร์มใหม่
         f3.setVisible(true);     // แสดง Form2
         this.dispose(); 
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Manage f3 = new Manage();  // สร้างหน้าฟอร์มใหม่
-        f3.setVisible(true);     // แสดง Form2
-        this.dispose(); 
+        this.setVisible(false);
+        loginForm.setVisible(true); 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     

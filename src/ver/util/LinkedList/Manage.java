@@ -542,9 +542,9 @@ try {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        if(jTextField7.getText().trim().isEmpty() && jTextField8.getText().trim().isEmpty()){
-                System.out.println("Choose 1 way before or after");
-                JOptionPane.showMessageDialog(this, "กรอกช่องใดช่องหนึ่งค่ะ before หรือ after");
+        if(jTextField7.getText().trim().isEmpty()){
+                System.out.println("Please input index need to insert ");
+                JOptionPane.showMessageDialog(this, "กรอก index ที่ต้องการแทรกค่ะ");
                 return;
         }
         int Code=checkValue(jTextField1.getText());
