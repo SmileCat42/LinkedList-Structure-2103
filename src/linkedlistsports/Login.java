@@ -7,11 +7,12 @@ package linkedlistsports;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import java.awt.Font;
+import linkedlistsports.DataStore;
 import linkedlistsports.DataStore.node;
 public class Login extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
-    node START=null;
+
 
 
     public Login() {
@@ -182,7 +183,7 @@ public class Login extends javax.swing.JFrame {
         String user=jTextField1.getText();
         String pass=jPasswordField1.getText();
         
-        node PTR=START;
+        node PTR=DataStore.Head;
         while(PTR!=null){
           if(user.equals((String)PTR.id) && pass.equals(PTR.pass)) {
               System.out.println("Login complete!");
@@ -206,13 +207,13 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please create username 6-10 chalacters");
             return;
         }
-        if(pass.length()<6 || pass.length()>10){
-            System.out.println("Please create password 6-10 chalacters");
-            JOptionPane.showMessageDialog(this, "Please create password 6-10 chalacters");
+        if(pass.length()<6 || pass.length()>12){
+            System.out.println("Please create password 6-12 chalacters");
+            JOptionPane.showMessageDialog(this, "Please create password 6-12 chalacters");
             return;
         }
         
-        node PTR=START;
+        node PTR=DataStore.Head;
         while(PTR!=null){
           if(username==(String)PTR.id) {
               System.out.println("this username exist already");
@@ -225,8 +226,8 @@ public class Login extends javax.swing.JFrame {
             NEW.id=username;
             NEW.pass=pass;
             
-            NEW.link=START;
-            START=NEW;
+            NEW.link=DataStore.Head;
+            DataStore.Head=NEW;
             jTextField1.setText("");
              jPasswordField1.setText("");
        System.out.println("Create username complete");

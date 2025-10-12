@@ -208,14 +208,14 @@ public Login() {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String username=jTextField1.getText();
         String pass=jPasswordField1.getText();
-        if(username.length()<6 || username.length()>10){
-            System.out.println("Please create username 6-10 chalacters");
-            JOptionPane.showMessageDialog(this, "Please create username 6-10 chalacters");
+        if(username.length()<6 || username.length()>12){
+            System.out.println("Please create username 6-12 chalacters");
+            JOptionPane.showMessageDialog(this, "Please create username 6-12 chalacters");
             return;
         }
         if(pass.length()<6 || pass.length()>10){
             System.out.println("Please create password 6-10 chalacters");
-            JOptionPane.showMessageDialog(this, "Please create password 6-10 chalacters");
+            JOptionPane.showMessageDialog(this, "Please create password 6-12 chalacters");
             return;
         }
         
