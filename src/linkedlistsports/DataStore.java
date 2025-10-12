@@ -11,9 +11,12 @@ package linkedlistsports;
 public class DataStore {
     public static int n=13;
     static DNode START,LAST;
-    final int UB=15;
-    int LB=0;
-    
+    public static node Head=null;
+        public static class node{
+        public String id;
+        public String pass;
+        public node link;
+    }
     public static class DNode {
         public int code;
         public String name;

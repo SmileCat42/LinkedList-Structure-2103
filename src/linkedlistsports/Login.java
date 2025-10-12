@@ -7,15 +7,11 @@ package linkedlistsports;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import java.awt.Font;
+import linkedlistsports.DataStore.node;
 public class Login extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
     node START=null;
-    class node{
-        public String id;
-        public String pass;
-        public node link;
-    }
 
 
     public Login() {
