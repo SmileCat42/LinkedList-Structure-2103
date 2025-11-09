@@ -32,7 +32,7 @@ And java.util.ArrayList และการใช้คำสั่งยูท�
 <h2 style="text-indent: 2em; text-decoration: underline;">เนื้อหาที่ได้รับ</h2>
 1. เข้าใจโครงสร้างของอาเรย์ว่าทำงานอย่างไร มีประโยชน์อย่างไรและมีเงื่อนไขอย่างไร
 <br>2. ทราบถึงวิธีการเข้าถึงตำแหน่งของอาเรย์ รวมถึงข้อจำกัดและความซ้ำซ้อนในการใช้กับอัลกอริทึม
-<br>3. ได้มีการใช้อัลกอริทึมหลากหลายรูปแบบ มีการ import java.util.ArrayList เข้ามาใช้งาน เพื่อทำให้เข้าใจความแตกต่างระหว่างอาเรย์แบบปกติและอาเรย์ลิส 
+<br>3. ได้มีการใช้อัลกอริทึมหลากหลายรูปแบบ มีการ import java.util.LinkedList เข้ามาใช้งาน เพื่อทำให้เข้าใจความแตกต่างระหว่างอาเรย์แบบปกติและอาเรย์ลิส 
 <br>4. ทำให้นักศึกษาสามารถตัดสินใจเลือกใช้อัลกอริทึมที่เหมาะสมที่สุด มาประยุกต์ใช้งานกับคำสั่งบนอาเรย์แต่ละแบบได้ดีที่สุด
 
 <br>
@@ -50,8 +50,8 @@ And java.util.ArrayList และการใช้คำสั่งยูท�
 1. ติดตั้งโปรแกรม Apache Netbeans
 <br>2. ดาวน์โหลดโปรเจคนี้ลงเครื่อง (ปุ่ม CODE สีเขียว)
 <br>3. เปิดโปรแกรม Netbeans เลือกที่ File > Open Project เลือกไฟล์เป็นโปรเจคนี้ที่ดาวน์โหลดไว้
-<br>4. สังเกตุแถบซ้ายมือจะมีชื่อไฟล์ที่โหลดมาไอคอนถ้วยกาแฟ กดคลิ็กดรอปดาวน์ลงมา กดลงมาต่อที่ Source Packages กดลงมาต่อที่ projectstack (หรือกดที่ projectstackVer2 เพื่อดูฉบับ util.stack)
-<br>5. คลิ๊กขวาที่ชื่อไฟล์ Front.java แล้วเลือก Run File
+<br>4. สังเกตุแถบซ้ายมือจะมีชื่อไฟล์ที่โหลดมาไอคอนถ้วยกาแฟ กดคลิ็กดรอปดาวน์ลงมา กดลงมาต่อที่ Source Packages กดลงมาต่อที่ projectstack (หรือกดที่ ver.util.LinkedList เพื่อดูฉบับ util.LinkedList)
+<br>5. คลิ๊กขวาที่ชื่อไฟล์ Login.java แล้วเลือก Run File
 <br><br><br><br>
 
 <a id="english"></a>
@@ -81,5 +81,5 @@ And java.util.ArrayList และการใช้คำสั่งยูท�
 1. Install Apache NetBeans IDE
 <br>2. Download this project to your computer (click green CODE button)
 <br>3. Open NetBeans, go to File > Open Project, and select this downloaded project
-<br>4. On the left panel, you will see the project name with coffee cup icon, click dropdown arrow to expand it, then open Source Packages → projectstack (→ projectstackVer2 for open util.stack version)
-<br>5. Right-click on the file Front.java and select Run File to execute the program.
+<br>4. On the left panel, you will see the project name with coffee cup icon, click dropdown arrow to expand it, then open Source Packages → projectstack (→ ver.util.LinkedList for open util.LinkedList version)
+<br>5. Right-click on the file Longin.java and select Run File to execute the program.
