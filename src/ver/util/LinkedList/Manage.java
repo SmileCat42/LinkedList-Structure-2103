@@ -548,7 +548,7 @@ try {
                 return;
         }
         int Code=checkValue(jTextField1.getText());
-        int Index=checkValue(jTextField7.getText());
+        int IST=checkValue(jTextField7.getText());
         int Price=checkValue(jTextField3.getText());
         int Type=checkValue(jTextField4.getText());
         
@@ -569,7 +569,7 @@ try {
                 JOptionPane.showMessageDialog(this, "มีหมายเลข code นี้อยู่แล้วค่ะ");
                 return;
         }
-        if(Index<1 || Index>DataStore.list.size()){
+        if(IST<1 || IST>DataStore.list.size()){
                 System.out.println("Input index need to insert within the range ");
                 JOptionPane.showMessageDialog(this, "กรุณากรอก index ให้อยู่ภายในขอบเขตค่ะ");
                 return;
@@ -596,7 +596,7 @@ try {
         }
         
         
-        list.add(Index-1,new DNode(Code, jTextField2.getText(), Type, Price, "/sc/home.png"));
+        list.add(IST-1,new DNode(Code, jTextField2.getText(), Type, Price, "/sc/home.png"));
         
        
         System.out.println("Status : insert complete!");
@@ -628,24 +628,7 @@ try {
         jLabel13.setText("Name : "+dd.name);
         jLabel14.setText("Price : "+dd.price);
         jLabel15.setText("Type : "+dd.type);
-        /*if(LOC==START){
-                LOC.FORW.BACK = null;
-                START=LOC.FORW;
-                System.out.println("Status : delete complete!");
-                jLabel11.setText("Status : delete complete!");
-                jLabel21.setText("Amount :    "+DataStore.list.size());
-                loadTableData();
-                return;
-        }
-        if(LOC==LAST){
-                LOC.BACK.FORW = null;
-                START=LOC.BACK;
-                System.out.println("Status : delete complete!");
-                jLabel11.setText("Status : delete complete!");
-                jLabel21.setText("Amount :    "+DataStore.list.size());
-                loadTableData();
-                return;
-        }*/
+        
 
         System.out.println("Status : delete complete!");
         jLabel11.setText("Status : delete complete!");

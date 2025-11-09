@@ -587,8 +587,9 @@ public Menu(Login loginForm) {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.setVisible(false);
-        loginForm.setVisible(true); 
+        Manage f4 = new Manage();  // สร้างหน้าฟอร์มใหม่
+        f4.setVisible(true);     // แสดง Form2
+        this.dispose(); 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     

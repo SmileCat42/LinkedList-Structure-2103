@@ -14,8 +14,7 @@ import javax.swing.JTextArea;
 import linkedlistsports.DataStore.DNode;
 
 public class Menu extends javax.swing.JFrame {
-    final int UB=15;
-    int LB=0;
+
     DNode START=DataStore.START;
     DNode LAST=DataStore.LAST;
     DNode current=DataStore.START;
