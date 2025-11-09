@@ -38,8 +38,7 @@ And java.LinkedList และการใช้คำสั่งยูทิล
 <br>
 <br>
 <h2 style="text-indent: 2em; text-decoration: underline;">การทำงานของอัลกอริทึม</h2>
-📄<a href="src/CodeExplanation/GHarray.pdf" target="_blank">ดูรายงานผลความเข้าใจผ่านการพิมพ์ (Array)</a>
-<br>📄<a href="src/CodeExplanation/GHarraylist.pdf" target="_blank">ดูรายงานผลความเข้าใจผ่านการพิมพ์ (Array List)</a>
+📄<a href="src/CodeExplanation/GHlinkedlist.pdf" target="_blank">ดูรายงานผลความเข้าใจผ่านการพิมพ์ (Array)</a>
 <br><br>    **พิมพ์มือเองทั้งหมด
 <br>
 <br>
@@ -70,8 +69,7 @@ And java.LinkedList และการใช้คำสั่งยูทิล
 <br>
 <br>
 <h2 style="text-indent: 2em; text-decoration: underline;">Code Explanation</h2>
-📄<a href="src/CodeExplanation/GHarray.pdf" target="_blank">open report code explanation (Array)</a>
-<br>📄<a href="src/CodeExplanation/GHarraylist.pdf" target="_blank">open report code explanation (Array List)</a>
+📄<a href="src/CodeExplanation/GHlinkedlist.pdf" target="_blank">open report code explanation (Array)</a>
 <br><br>    **manually created
 <br>
 <br>
