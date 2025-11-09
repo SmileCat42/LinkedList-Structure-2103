@@ -30,9 +30,9 @@ And java.LinkedList และการใช้คำสั่งยูทิล
 <br>
 
 <h2 style="text-indent: 2em; text-decoration: underline;">เนื้อหาที่ได้รับ</h2>
-1. เข้าใจโครงสร้างของอาเรย์ว่าทำงานอย่างไร มีประโยชน์อย่างไรและมีเงื่อนไขอย่างไร
-<br>2. ทราบถึงวิธีการเข้าถึงตำแหน่งของอาเรย์ รวมถึงข้อจำกัดและความซ้ำซ้อนในการใช้กับอัลกอริทึม
-<br>3. ได้มีการใช้อัลกอริทึมหลากหลายรูปแบบ มีการ import java.util.LinkedList เข้ามาใช้งาน เพื่อทำให้เข้าใจความแตกต่างระหว่างอาเรย์แบบปกติและอาเรย์ลิส 
+1. เข้าใจโครงสร้างทั้งแบบลิงค์ลิสต์ทางเดียวและลิงค์ลิสต์ 2 ทาง ว่าแตกต่างกันอย่างไร ทำงานอย่างไร
+<br>2. ทราบถึงข้อจำกัดต่างๆของลิงค์ลิสต์ทั้ง 2 แบบ รวมถึงการใช้งานกับอัลกอริทึมที่จำเป็นต้องเข้าลูปเพื่อท่องโหนด
+<br>3. ได้มีการใช้อัลกอริทึมหลากหลายรูปแบบ มีการ import java.util.LinkedList เข้ามาใช้งาน เพื่อทำให้เข้าใจความแตกต่างระหว่างลิงค์ลิสต์แบบปกติและยูทิลลิงค์ลิสต์ 
 <br>4. ทำให้นักศึกษาสามารถตัดสินใจเลือกใช้อัลกอริทึมที่เหมาะสมที่สุด มาประยุกต์ใช้งานกับคำสั่งบนอาเรย์แต่ละแบบได้ดีที่สุด
 
 <br>
@@ -61,8 +61,8 @@ And java.LinkedList และการใช้คำสั่งยูทิล
 <br>
 
 <h2 style="text-indent: 2em; text-decoration: underline;">Content Received</h2>
-1. Understand how an array structure works, advantages and limitations
-<br>2. Learn how to access elements in array, including its constraints and the redundancy that may occur when using arrays in algorithms
+1. Understand linkedlist 1 way and linkedlist 2 ways structure how to work, how are they different
+<br>2. Know the limitation of linkedlist structure, including work with algorithm that necessary to enter the loop for traversing node
 <br>3. Gain experience using various algorithms, and learn to import java.util.ArrayList to understand the differences between array and ArrayList
 <br>4. Enable students to analyze and choose the most appropriate algorithm to apply effectively with different types of array operations
 
