@@ -1,6 +1,6 @@
-<h1 align="center"><b>Project Array โปรเจคอาร์เรย์</b></h1>
+<h1 align="center"><b>Project Array โปรเจคลิงค์ลิสต์</b></h1>
 <p align="center">
-And java.util.ArrayList และการใช้คำสั่งอาเรย์ลิส
+And java.util.ArrayList และการใช้คำสั่งยูทิลลิงค์ลิสต์
 </p>
 
 <br><br>หน้าจอล็อคอิน Login Page<br>
@@ -25,7 +25,7 @@ And java.util.ArrayList และการใช้คำสั่งอาเ�
 
 <br><br>
 <h2 style="text-indent: 2em; text-decoration: underline;">จุดประสงค์ของการทำโปรเจค</h2>
-&nbsp;&nbsp;&nbsp;&nbsp;เนื่องจากโครงสร้างประเภท Array, Stack, Queue และ LinkedList เป็นโครงสร้างที่ไม่ได้มีความซับซ้อนมาก อาจารย์จึงอยากให้นักศึกษาเข้าใจแบบจริงๆ โดยการให้นักศึกษาถ่ายทอดความเข้าใจของตนเองผ่านทางโปรแกรม Apache Netbeans เพื่อเป็นการฝึกการใช้งานโปรแกรมเบื้องต้นด้วย โดยการนำไปใช้งานกับอัลกอริทึมในแบบต่างๆ ที่มีการใช้งานบ่อย เช่น การแทรกข้อมูล การลบข้อมูล การค้นหา เป็นต้น
+&nbsp;&nbsp;&nbsp;&nbsp;โปรเจคนี้เป็นโปรเจคที่ต่อยอดมาจากโปรเจคอาเรย์ เพื่อจะได้ฝึกการแก้ไขโค้ดจากการใช้โครงเดิม และทำให้อาจารย์แน่ใจด้วยว่าไม่ได้ใช้ AI 100% เพราะการนำโปรเจคที่มีอยู่แล้วมาปรับเปลี่ยนเป็นอีกรูปแบบหนึ่ง หากไม่มีความรู้พื้นฐานก็จะไม่สามารถจะเอากลับมาทำให้อยู่ในลักษณะหรือหน้าตาแบบเดิมได้ อีกทั้งเนื่องจากโครงสร้างประเภท Array, Stack, Queue และ LinkedList เป็นโครงสร้างที่ไม่ได้มีความซับซ้อนมาก อาจารย์จึงอยากให้นักศึกษาเข้าใจแบบจริงๆ โดยการให้นักศึกษาถ่ายทอดความเข้าใจของตนเองผ่านทางโปรแกรม Apache Netbeans เพื่อเป็นการฝึกการใช้งานโปรแกรมเบื้องต้นด้วย โดยการนำไปใช้งานกับอัลกอริทึมในแบบต่างๆ ที่มีการใช้งานบ่อย เช่น การแทรกข้อมูล การลบข้อมูล การค้นหา เป็นต้น
 <br>
 <br>
 
@@ -57,7 +57,7 @@ And java.util.ArrayList และการใช้คำสั่งอาเ�
 <a id="english"></a>
 
 <h2 style="text-indent: 2em; text-decoration: underline;">Project Objective</h2>
-&nbsp;&nbsp;&nbsp;&nbsp;Since data structures such as Array, Stack, Queue, and LinkedList are not highly complex, the instructor would like students to gain a true understanding of them by expressing our knowledge through programming in Apache NetBeans. This method also serves as basic practice in using program. The project applying these structures to commonly used algorithms such as insertion, deletion, and searching, among others.
+&nbsp;&nbsp;&nbsp;&nbsp;This project is an extension of the previous Array project. The purpose is to practice modifying existing code and to demonstrate to the teacher that the work was not generated entirely by AI. By taking an existing project and transforming it into a new form, it shows that the student understanding of the underlying concepts—since without such knowledge, it would be impossible to recreate the project with a similar structure or appearance. at the same time, data structures such as Array, Stack, Queue, and LinkedList are not highly complex, the instructor would like students to gain a true understanding of them by expressing our knowledge through programming in Apache NetBeans. This method also serves as basic practice in using program. The project applying these structures to commonly used algorithms such as insertion, deletion, and searching, among others.
 <br>
 <br>
 
