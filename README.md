@@ -4,13 +4,13 @@ And java.LinkedList และการใช้คำสั่งยูทิล
 </p>
 
 <br><br>หน้าจอล็อคอิน Login Page<br>
-![นี่คือรูปหน้าจอ Login](https://github.com/SmileCat42/Array-DataStructure-2103/blob/master/src/sc/03.png)
+![นี่คือรูปหน้าจอ Login](https://github.com/SmileCat42/LinkedList-Structure-2103/blob/master/src/sc/17.png)
 
 <br><br>ส่วนแสดงภาพและรายละเอียด Show detail Page 
-![นี่คือรูปหน้าจอ Login](https://github.com/SmileCat42/Array-DataStructure-2103/blob/master/src/sc/MenuPage.png)
+![นี่คือรูปหน้าจอ Login](https://github.com/SmileCat42/LinkedList-Structure-2103/blob/master/src/sc/18.png)
 
 <br><br>รายชื่อสินค้าทั้งหมด Table products Page
-![นี่คือรูปหน้าจอ Login](https://github.com/SmileCat42/Array-DataStructure-2103/blob/master/src/sc/ManagePage.png)
+![นี่คือรูปหน้าจอ Login](https://github.com/SmileCat42/LinkedList-Structure-2103/blob/master/src/sc/19.png)
 
 <br><br>
 
