@@ -1,6 +1,6 @@
 <h1 align="center"><b>Project Array โปรเจคลิงค์ลิสต์</b></h1>
 <p align="center">
-And java.util.ArrayList และการใช้คำสั่งยูทิลลิงค์ลิสต์
+And java.LinkedList และการใช้คำสั่งยูทิลลิงค์ลิสต์
 </p>
 
 <br><br>หน้าจอล็อคอิน Login Page<br>
