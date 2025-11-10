@@ -38,7 +38,7 @@ And java.LinkedList และการใช้คำสั่งยูทิล
 <br>
 <br>
 <h2 style="text-indent: 2em; text-decoration: underline;">การทำงานของอัลกอริทึม</h2>
-📄<a href="src/CodeExplanation/GHlinkedlist.pdf" target="_blank">ดูรายงานผลความเข้าใจผ่านการพิมพ์</a>
+📄 <a href="src/CodeExplanation/GHlinkedlist.pdf" target="_blank">ดูรายงานผลความเข้าใจผ่านการพิมพ์</a>
 <br><br>    **พิมพ์มือเองทั้งหมด
 <br>
 <br>
@@ -63,13 +63,13 @@ And java.LinkedList และการใช้คำสั่งยูทิล
 <h2 style="text-indent: 2em; text-decoration: underline;">Content Received</h2>
 1. Understand linkedlist 1 way and linkedlist 2 ways structure how to work, how are they different
 <br>2. Know the limitation of linkedlist structure, including work with algorithm that necessary to enter the loop for traversing node
-<br>3. Gain experience using various algorithms, and learn to import java.util.ArrayList to understand the differences between array and ArrayList
+<br>3. Gain experience using various algorithms, and learn to import java.util.LinkedList to understand the differences between regular linkedlist and java.util.linkedlist
 <br>4. Enable students to analyze and choose the most appropriate algorithm to apply effectively with different types of array operations
 
 <br>
 <br>
 <h2 style="text-indent: 2em; text-decoration: underline;">Code Explanation</h2>
-📄<a href="src/CodeExplanation/GHlinkedlist.pdf" target="_blank">open report code explanation</a>
+📄 <a href="src/CodeExplanation/GHlinkedlist.pdf" target="_blank">open report code explanation</a>
 <br><br>    **manually created
 <br>
 <br>
