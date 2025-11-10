@@ -1,4 +1,4 @@
-<h1 align="center"><b>Project Array โปรเจคลิงค์ลิสต์</b></h1>
+<h1 align="center"><b>Project LinkedList โปรเจคลิงค์ลิสต์</b></h1>
 <p align="center">
 And java.LinkedList และการใช้คำสั่งยูทิลลิงค์ลิสต์
 </p>
