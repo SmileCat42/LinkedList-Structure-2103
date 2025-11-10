@@ -64,7 +64,7 @@ And java.LinkedList และการใช้คำสั่งยูทิล
 1. Understand linkedlist 1 way and linkedlist 2 ways structure how to work, how are they different
 <br>2. Know the limitation of linkedlist structure, including work with algorithm that necessary to enter the loop for traversing node
 <br>3. Gain experience using various algorithms, and learn to import java.util.LinkedList to understand the differences between regular linkedlist and java.util.linkedlist
-<br>4. Enable students to analyze and choose the most appropriate algorithm to apply effectively with different types of array operations
+<br>4. Enable students to analyze and choose the most appropriate algorithm to apply effectively with different types of linkedlist operations
 
 <br>
 <br>
