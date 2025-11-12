@@ -74,7 +74,7 @@ And java.LinkedList และการใช้คำสั่งยูทิล
 <br>    **manually created
 <br>
 <br>
-<h2 style="text-indent: 2em; text-decoration: underline;">Leaning Outcomes</h2>
+<h2 style="text-indent: 2em; text-decoration: underline;">Learning Outcomes</h2>
 📄 <a href="src/CodeExplanation/exam2103.pdf" target="_blank">Exam</a>
 <br>
 <br>
