@@ -70,11 +70,11 @@ And java.LinkedList และการใช้คำสั่งยูทิล
 <br>
 <br>
 <h2 style="text-indent: 2em; text-decoration: underline;">Code Explanation</h2>
-<br>📄 <a href="src/CodeExplanation/GHlinkedlist.pdf" target="_blank">open report code explanation</a>
+📄 <a href="src/CodeExplanation/GHlinkedlist.pdf" target="_blank">open report code explanation</a>
 <br>    **manually created
 <br>
 <br>
-<h2 style="text-indent: 2em; text-decoration: underline;">Leaning Outcomes/h2>
+<h2 style="text-indent: 2em; text-decoration: underline;">Leaning Outcomes</h2>
 📄 <a href="src/CodeExplanation/exam2103.pdf" target="_blank">Exam</a>
 <br>
 <br>
