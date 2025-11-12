@@ -39,10 +39,11 @@ And java.LinkedList และการใช้คำสั่งยูทิล
 <br>
 <h2 style="text-indent: 2em; text-decoration: underline;">การทำงานของอัลกอริทึม</h2>
 📄 <a href="src/CodeExplanation/GHlinkedlist.pdf" target="_blank">ดูรายงานผลความเข้าใจผ่านการพิมพ์</a>
-<br><br>    **พิมพ์มือเองทั้งหมด
+<br>    **พิมพ์มือเองทั้งหมด
 <br>
 <br>
-<h2 style="text-indent: 2em; text-decoration: underline;">ข้อสอบ</h2>
+<h2 style="text-indent: 2em; text-decoration: underline;">ผลการเรียนรู้</h2>
+📄 <a href="src/CodeExplanation/exam2103.pdf" target="_blank">ข้อสอบ</a>
 <br><br>
 
 <h2 style="text-indent: 2em; text-decoration: underline;">ขั้นตอนการเปิดโปรแกรม</h2>
@@ -69,12 +70,14 @@ And java.LinkedList และการใช้คำสั่งยูทิล
 <br>
 <br>
 <h2 style="text-indent: 2em; text-decoration: underline;">Code Explanation</h2>
-📄 <a href="src/CodeExplanation/GHlinkedlist.pdf" target="_blank">open report code explanation</a>
-<br><br>    **manually created
+<br>📄 <a href="src/CodeExplanation/GHlinkedlist.pdf" target="_blank">open report code explanation</a>
+<br>    **manually created
 <br>
 <br>
-<h2 style="text-indent: 2em; text-decoration: underline;">Exam</h2>
-<br><br>
+<h2 style="text-indent: 2em; text-decoration: underline;">Leaning Outcomes/h2>
+📄 <a href="src/CodeExplanation/exam2103.pdf" target="_blank">Exam</a>
+<br>
+<br>
 <h2 style="text-indent: 2em; text-decoration: underline;">How to open the program</h2>
 1. Install Apache NetBeans IDE
 <br>2. Download this project to your computer (click green CODE button)
